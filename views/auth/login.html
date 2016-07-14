@@ -1,0 +1,111 @@
+<body class="demo-fox" style="margin: 100%;">
+<div class="container login-margin">
+    <header class="codrops-header">
+        <h1>tdah estudantil</h1>
+        <p class="info">Please view on a desktop <br/>(Chrome only)</p>
+    </header>
+    <div class="content content--fox">
+        <div class="fox">
+            <div class="fox-body">
+                <div class="fox-front-leg"></div>
+                <div class="fox-front-leg"></div>
+            </div>
+            <div class="fox-head">
+                <div class="fox-face">
+                    <div class="fox-ears">
+                        <div class="fox-ear"></div>
+                        <div class="fox-ear"></div>
+                    </div>
+                    <div class="fox-skull"></div>
+                    <div class="fox-front"></div>
+                    <div class="fox-eyes"></div>
+                    <div class="fox-nose"></div>
+                </div>
+            </div>
+            <div class="fox-tail">
+                <div class="fox-tail">
+                    <div class="fox-tail">
+                        <div class="fox-tail">
+                            <div class="fox-tail">
+                                <div class="fox-tail">
+                                    <div class="fox-tail">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display:none">
+            <defs>
+                <filter id="squiggly-0">
+                    <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="0" />
+                    <feDisplacementMap id="displacement" in="SourceGraphic" in2="noise" scale="2" />
+                </filter>
+                <filter id="squiggly-1">
+                    <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="1" />
+                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" />
+                </filter>
+                <filter id="squiggly-2">
+                    <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="2" />
+                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" />
+                </filter>
+                <filter id="squiggly-3">
+                    <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="3" />
+                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" />
+                </filter>
+                <filter id="squiggly-4">
+                    <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="4" />
+                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1" />
+                </filter>
+            </defs>
+        </svg>
+    </div>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+
+
+    <!--BACKSTRETCH-->
+    <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+    <script type="text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
+    <script>
+    $.backstretch("assets/img/login-bg.jpg", {speed: 500});
+</script>
+
+
+
+    <div style="margin-top:-130px;">
+        <div class="container">
+            <form class="form-login" role="form" method="POST" action="">
+                <h2 class="form-login-heading">Bem vindo</h2>
+                <div class="login-wrap">
+                    <input  id="email" type="email" name="email" value="" class="form-control" placeholder="Email" autofocus>
+
+                    <span class="help-block">
+                                        <strong></strong>
+                    </span>
+                    <br>
+                    <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+
+                    <label class="checkbox">
+		                <span class="pull-right">
+		                    <a data-toggle="modal" href="">Esqueceu sua Senha?</a>
+
+		                </span>
+                    </label>
+                    <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> Logar</button>
+                    <hr>
+
+                    <div class="login-social-link centered">
+                        <p>or you can sign in via your social network</p>
+                        <button class="btn btn-facebook" type="submit"><i class="fa fa-facebook"></i> Facebook</button>
+                        <button class="btn btn-twitter" type="submit"><i class="fa fa-twitter"></i> Twitter</button>
+                    </div>
+                    <div class="registration">
+                        Ainda não tem cadastro?<br/>
+                        <a class="btn btn-success" href="/register">
+                            Criar uma conta
+                        </a>
+                    </div>
+                </div>
