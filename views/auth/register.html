@@ -264,15 +264,16 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
 
     <div class="testbox register-form">
+        <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
         <h1>Cadastro</h1>
 
         <form class="form-horizontal" name="loginForm" ng-submit="register()" role="form">
             <hr>
 
             <div class="accounttype">
-                <input type="radio" ng-model="user.type" value="1" id="radioOne" name="tipo" checked/>
-                <label for="radioOne" class="radio" chec>Aluno</label>
-                <input type="radio" ng-model="user.type" value="2" id="radioTwo" name="tipo" />
+                <input type="radio" ng-model="user.type" value="1" id="radioOne" name="profile" checked>
+                <label for="radioOne" class="radio">Aluno</label>
+                <input type="radio" ng-model="user.type" value="2" id="radioTwo" name="profile">
                 <label for="radioTwo" class="radio">Professor</label>
 
             </div>
@@ -288,10 +289,7 @@
                 <label id="icon" for="name"><i class="icon-shield"></i></label>
                 <input type="password" ng-model="user.confirmPassowrd" name="password_confirmation" id="name" placeholder="confirm Password" required/>
                 <div class="gender">
-                    <input type="radio" value="None" id="male" name="gender" checked/>
-                    <label for="male" class="radio" chec>Homen</label>
-                    <input type="radio" value="None" id="female" name="gender" />
-                    <label for="female" class="radio">Mulher</label>
+
                 </div>
                 <button type="submit" class="btn btn-success" value="Registar">Registrar </button>
         </form>

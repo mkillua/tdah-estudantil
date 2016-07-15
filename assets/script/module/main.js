@@ -1,1 +1,1 @@
-angular.module('Tdah',['ngRoute']);
+angular.module('Tdah',['ngRoute','ui.bootstrap']);
