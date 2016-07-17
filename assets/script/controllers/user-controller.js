@@ -1,11 +1,36 @@
 
 angular.module('Tdah').controller('UserController', function($scope,$http) {
 
+
     $scope.user = {};
+
+
+    /**
+     * metodo responsavel por verificar se email está disponivel
+     */
+    $scope.validaEmail  = function () {
+
+            $http.get('//tdah-api.dev/user/email/' + $scope.user.email)
+                .success(function (responses) {
+                    $scope.validEmail = true;
+                })
+                .error(function (response) {
+                    $scope.validEmail = false;
+                    
+                });
+
+    };
+
+
+    /**
+     * metodo responsavel por inserir novo usuario
+     */
     $scope.register = function () {
 
-        $http.post('//tdah-api.dev/user/user', $scope.user)
+       $http.post('//tdah-api.dev/user/user', $scope.user)
             .success(function (responses) {
+                $scope.user = {};
+                $scope.validEmail = '';
                 $scope.alerts = [
                     { type: 'success', msg: 'Cadastro realizado com sucesso.' }
                 ];
@@ -21,4 +46,22 @@ angular.module('Tdah').controller('UserController', function($scope,$http) {
     $scope.closeAlert = function(index) {
         $scope.alerts.splice(index, 1);
     };
+
+    $scope.login = function()
+    {
+        $http.get('//tdah-api.dev/user/login', $scope.user)
+            .success(function (response) {
+                console.log(response);
+                $scope.validEmail = '';
+                $scope.alerts = [
+                    { type: 'success', msg: 'Cadastro realizado com sucesso.' }
+                ];
+            })
+            .error(function (erro){
+                console.log(erro);
+                $scope.alerts = [
+                    { type: 'danger', msg: 'Ops: erro ao inserir usuario.' }
+                ];
+            });
+    }
 });

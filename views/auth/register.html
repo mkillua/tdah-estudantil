@@ -173,7 +173,7 @@
             opacity: 0.3;
         }
 
-        input[type=text],input[type=password]{
+        input[type=text],input[type=password],input[type=email]{
             width: 200px;
             height: 39px;
             -webkit-border-radius: 0px 4px 4px 0px/5px 5px 4px 4px;
@@ -264,10 +264,9 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
 
     <div class="testbox register-form">
-        <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
         <h1>Cadastro</h1>
 
-        <form class="form-horizontal" name="loginForm" ng-submit="register()" role="form">
+        <form  class="form-horizontal" name="loginForm" ng-submit="register()" role="form">
             <hr>
 
             <div class="accounttype">
@@ -280,19 +279,27 @@
             <hr>
 
                 <label id="icon" for="name"><i class="icon-user"></i></label>
-                <input type="text" ng-model="user.name" name="name" id="name" placeholder="Nome" required/>
-
+                <input type="text" ng-model="user.name" name="name" id="name" placeholder="Nome" required>
                 <label id="icon" for="name"><i class="icon-envelope" ></i></label>
-                <input type="text" ng-model="user.email" name="email" id="name" placeholder="Email" required/>
+                <input type="email" ng-model="user.email" name="email" id="name" ng-change="validaEmail()" placeholder="Email" required/>
+                <span ng-show="validEmail == true" ng-time="5">
+                    <img src="/assets/img/icons/success.png"></img>
+                </span>
+                <span ng-show="validEmail == false ">
+                    <img src="/assets/img/icons/error.png"></img>
+                </span>
                 <label id="icon" for="name"><i class="icon-shield"></i></label>
-                <input type="password"  ng-model="user.password" name="password" id="name" placeholder="Password" required/>
+                <input type="password"  ng-model="user.password" name="password" id="name" placeholder="Password" minlength="8" maxlength="20" required/>
                 <label id="icon" for="name"><i class="icon-shield"></i></label>
-                <input type="password" ng-model="user.confirmPassowrd" name="password_confirmation" id="name" placeholder="confirm Password" required/>
+                <input type="password" ng-model="user.passwordConfirm" name="password_confirmation" id="name" placeholder="confirm Password" required/>
                 <div class="gender">
 
                 </div>
-                <button type="submit" class="btn btn-success" value="Registar">Registrar </button>
+                <button type="submit" ng-disabled="validEmail ==false || loginForm.$invalid || user.password != user.passwordConfirm" class="btn btn-success" value="Registar">Registrar </button>
         </form>
-</div>
+        <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+
+    </div>
+
         </div>
 

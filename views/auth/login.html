@@ -1,4 +1,4 @@
-<body class="demo-fox" style="margin: 100%;">
+<body class="demo-fox" style="margin: 100%;" ng-controller="UserController">
 <div class="container login-margin">
     <header class="codrops-header">
         <h1>tdah estudantil</h1>
@@ -76,7 +76,7 @@
 
     <div style="margin-top:-130px;">
         <div class="container">
-            <form class="form-login" role="form" method="POST" action="">
+            <form class="form-login" role="form" ng-submit="login">
                 <h2 class="form-login-heading">Bem vindo</h2>
                 <div class="login-wrap">
                     <input  id="email" type="email" name="email" value="" class="form-control" placeholder="Email" autofocus>
