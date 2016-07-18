@@ -27,7 +27,7 @@ angular.module('Tdah').controller('UserController', function($scope,$http) {
      */
     $scope.register = function () {
 
-       $http.post('//tdah-api.dev/user/user', $scope.user)
+       $http.post('//tdah-api.dev/user/register', $scope.user)
             .success(function (responses) {
                 $scope.user = {};
                 $scope.validEmail = '';
@@ -49,7 +49,8 @@ angular.module('Tdah').controller('UserController', function($scope,$http) {
 
     $scope.login = function()
     {
-        $http.get('//tdah-api.dev/user/login', $scope.user)
+        console.log($scope.user);
+        $http.get('//tdah-api.dev/user/login/'+$scope.user.email+'/'+$scope.user.password)
             .success(function (response) {
                 console.log(response);
                 $scope.validEmail = '';
