@@ -1,5 +1,5 @@
 
-<div class="container login-margin">
+<div class="container">
 
     <div class="content content--fox">
         <div class="fox">
@@ -281,8 +281,15 @@
                 <label id="icon" for="name"><i class="icon-user"></i></label>
                 <input type="text" ng-model="user.name" name="name" id="name" placeholder="Nome" required>
                 <label id="icon" for="name"><i class="icon-envelope" ></i></label>
-                <input type="email" ng-model="user.email" name="email" id="name" ng-change="validaEmail()" placeholder="Email" required/>
-                <span ng-show="validEmail == true" ng-time="5">
+                <input type="email"
+                       ng-model="user.email"
+                       name="email" id="name"
+                       ng-change="validaEmail()"
+                       ng-model-options="{ updateOn: 'blur' }"
+                       placeholder="Email" required
+                />
+
+            <span ng-show="validEmail == true" ng-time="5">
                     <img src="/assets/img/icons/success.png"></img>
                 </span>
                 <span ng-show="validEmail == false ">

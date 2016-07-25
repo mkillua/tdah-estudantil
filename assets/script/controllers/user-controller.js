@@ -1,5 +1,5 @@
 
-angular.module('Tdah').controller('UserController', function($scope,$http) {
+angular.module('Tdah').controller('UserController', function($scope,$http,$rootScope,$window) {
 
 
     $scope.user = {};
@@ -34,7 +34,6 @@ angular.module('Tdah').controller('UserController', function($scope,$http) {
                 $scope.alerts = [
                     { type: 'success', msg: 'Cadastro realizado com sucesso.' }
                 ];
-                console.log(responses);
             })
             .error(function (erro){
                 $scope.alerts = [
@@ -43,26 +42,26 @@ angular.module('Tdah').controller('UserController', function($scope,$http) {
             });
     };
 
-    $scope.closeAlert = function(index) {
-        $scope.alerts.splice(index, 1);
-    };
 
+    /**
+     * Método responsavel por buscar os usuarios
+     */
     $scope.login = function()
     {
         console.log($scope.user);
         $http.get('//tdah-api.dev/user/login/'+$scope.user.email+'/'+$scope.user.password)
             .success(function (response) {
-                console.log(response);
-                $scope.validEmail = '';
-                $scope.alerts = [
-                    { type: 'success', msg: 'Cadastro realizado com sucesso.' }
-                ];
+                $scope.user = response;
+                $window.location.href = '/home';
             })
             .error(function (erro){
-                console.log(erro);
                 $scope.alerts = [
-                    { type: 'danger', msg: 'Ops: erro ao inserir usuario.' }
+                    { type: 'danger', msg: 'Ops: Usuario e senha incorretos.' }
                 ];
             });
     }
+
+    $scope.closeAlert = function(index) {
+        $scope.alerts.splice(index, 1);
+    };
 });
