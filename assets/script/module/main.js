@@ -1,4 +1,4 @@
-angular.module('Tdah',['ui.router','ui.bootstrap'])
+angular.module('Tdah',['ui.router','ui.bootstrap','angularTrix','ngSanitize'])
     .run(function($rootScope) {
         $rootScope.user = '';
     });

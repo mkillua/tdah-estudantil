@@ -1,0 +1,28 @@
+<section>
+    <div class="input-group">
+        <input ng-model="search" type="text" class="form-control" placeholder="digite para buscar">
+   <span class="input-group-btn">
+
+                            <a  class="btn btn-success" ui-sref="aula">Novo </a>
+   </span>
+
+    </div>
+    </section>
+        <span ng-init="getAllQuestions()"> </span>
+        <h3><i class="title"></i> Perguntas da aula</h3>
+<! -- Blog Panel -->
+<div ng-repeat="question in questions|filter:search">
+    <div class="col-lg-4 col-md-4 col-sm-4 mb">
+        <div class="content-panel pn">
+            <div id="blog-bg">
+                <div class="badge badge-popular">Nova</div>
+            </div>
+            <div class="blog-text">
+                <h5>{{question.question}}</h5>
+                <button id="{{question.id}}" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal">
+                    responder
+                </button>
+            </div>
+        </div>
+    </div>
+    </div>

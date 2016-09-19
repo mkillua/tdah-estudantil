@@ -25,6 +25,8 @@
     "angular-environment": "^1.0.4",
     "angular-ui-bootstrap": "^1.3.3",
     "angular-ui-router": "^0.3.1",
-    "angular-resource": "^1.5.8"
+    "angular-resource": "^1.5.8",
+    "angular-redactor": "^1.1.6",
+    "angular-trix": "^1.0.2"
   }
 }

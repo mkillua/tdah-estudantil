@@ -34,15 +34,75 @@ angular.module('Tdah')
                         templateUrl: "views/home.html",
                     }
                 }});
+
+        $stateProvider.state('curso', {
+            parent: 'home',
+            url: "/curso",
+            views: {
+                "home": {
+                    controller: 'CourseController',
+                    templateUrl: "views/curso/curso.html"
+                }
+            }});
+
         $stateProvider.state('aula', {
             parent: 'home',
-                url: "/aula",
+                url: "/novocurso",
                 views: {
                     "home": {
-                        controller: 'HomeController',
-                        templateUrl: "views/auth/aulas/aula.html"
+                        controller: 'CourseController',
+                        templateUrl: "views/curso/novocurso.html"
                     }
                 }});
+        $stateProvider.state('aulas', {
+            parent: 'home',
+            url: "/aulas:courseId",
+            views: {
+                "home": {
+                    controller: 'ClassController',
+                    templateUrl: "views/curso/aulas/aulas.html"
+                }
+            }});
+
+        $stateProvider.state('lesson', {
+            parent: 'home',
+            url: "/aulas/:courseId/:classId",
+            views: {
+                "home": {
+                    controller: 'ClassController',
+                    templateUrl: "views/curso/aulas/aula.html"
+                }
+            }});
+
+        $stateProvider.state('novaaula', {
+            parent: 'home',
+            url: "/novaaula:courseId",
+            views: {
+                "home": {
+                    controller: 'ClassController',
+                    templateUrl: "views/curso/aulas/novaaula.html"
+                }
+            }});
+
+        $stateProvider.state('newquestion', {
+            parent: 'home',
+            url: "/novapergunta/:classId",
+            views: {
+                "home": {
+                    controller: 'ClassController',
+                    templateUrl: "views/curso/aulas/perguntas/novapergunta.html"
+                }
+            }});
+
+        $stateProvider.state('questions', {
+            parent: 'home',
+            url: "/aula/:classId/perguntas",
+            views: {
+                "home": {
+                    controller: 'ClassController',
+                    templateUrl: "views/curso/aulas/perguntas/perguntas.html"
+                }
+            }});
 
 
 

@@ -9,3 +9,18 @@
 .register-form{
     margin: 32px auto!important;
 }
+.img-curso {
+    margin-top: -15px;
+    min-height: 150px;
+    width: 100%;
+}
+
+.trix {
+    color: #111;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    margin: 0;
+    padding: 4px 8px;
+    min-height: 500px;
+    outline: none;
+}

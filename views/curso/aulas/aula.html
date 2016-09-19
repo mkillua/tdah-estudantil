@@ -1,0 +1,14 @@
+
+<div ng-init="getClassById()">
+        <a class="btn btn-lg  btn-theme02 text-justify " ui-sref="newquestion({courseId:2})">Cadastrar Pergunta</a>
+    <br>
+    <br>
+    <div class="panel panel-default">
+        <div class="panel-heading"><h1>{{class.title}}</h1></div>
+        <div class="panel-body" ng-bind-html="class.content"></div>
+    </div>
+    <a class="btn btn-lg btn-success pull-right" ui-sref="questions({classId:2})">Entendi, ir para as perguntas</a>
+    <a class="btn btn-lg btn-primary pull-left" ui-sref="aulas({courseId:2})">Voltar</a>
+</div>
+
+
