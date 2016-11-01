@@ -94,6 +94,25 @@ angular.module('Tdah').controller('ClassController', function($scope,$http,$root
 
     };
 
+    $scope.getQuestionById  = function () {
+        $http.get('//tdah-api.dev/question/especific',{
+            params:{
+            'questionId':$stateParams
+            .questionId}})
+            .success(function (responses) {
+                console.log(responses);
+                $scope.question = responses.data;
+            })
+            .error(function (error) {
+                console.log("deu ruim");
+                $scope.alerts = [
+                    { type: 'danger', msg: error }
+                ];
+            });
+
+
+    };
+
 
 
 

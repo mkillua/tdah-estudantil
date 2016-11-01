@@ -104,6 +104,16 @@ angular.module('Tdah')
                 }
             }});
 
+        $stateProvider.state('question', {
+            parent: 'home',
+            url: "/curso/:classId/pergunta/:questionId",
+            views: {
+                "home": {
+                    controller: 'ClassController',
+                    templateUrl: "views/curso/aulas/perguntas/pergunta.html"
+                }
+            }});
+
 
 
         $locationProvider.html5Mode(true);

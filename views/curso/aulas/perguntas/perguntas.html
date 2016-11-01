@@ -19,9 +19,7 @@
             </div>
             <div class="blog-text">
                 <h5>{{question.question}}</h5>
-                <button id="{{question.id}}" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal">
-                    responder
-                </button>
+                <a class="btn btn-sm btn-success" ui-sref="question({questionId:question.id})">responder</a>
             </div>
         </div>
     </div>
