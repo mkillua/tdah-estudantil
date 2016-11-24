@@ -2239,5 +2239,18 @@ label {
 .site-min-height {
     min-height: 900px;
 }
+.profile-warning {
+    background: #d55707;
+    height: 50px;
+}
 
+.profile-danger {
+    background: #cc0f23;
+    height: 50px;
+}
+
+.profile-success {
+    background: #9bf068;
+    height: 50px;
+}
 

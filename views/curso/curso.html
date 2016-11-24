@@ -22,8 +22,9 @@
                             <h4>{{course.dificuldade}}</h4>
                         </div>
                         <div class="profile-01 centered">
-                            <a class="btn" ui-sref="aulas({courseId:2})">Iniciar</a>
-
+                            <a class="btn btn-facebook" ui-sref="aulas({courseId:course.id})">Iniciar</a>
+                            <button class="btn btn-danger" ng-click="deleteCourse(course.id)">Excluir</button>
+                            <button class="btn btn-warning">Editar</button>
                         </div>
                     </div>
                     <! --/content-panel -->

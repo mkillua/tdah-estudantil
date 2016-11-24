@@ -117,24 +117,7 @@ angular.module('Tdah')
 
 
         $locationProvider.html5Mode(true);
-
-
-       /* $routeProvider.when('/', {
-            templateUrl: 'index.html',
-            controller:'UserController',
-        });
-
-        $routeProvider.when('/register', {
-            templateUrl: '/views/auth/register.html',
-            controller:'UserController',
-        });
-        $routeProvider.when('/home', {
-            templateUrl: '/views/home.html',
-            controller:'HomeController',
-        });
-
-        $locationProvider.html5Mode(true);
-*/
+        
     });
 
 

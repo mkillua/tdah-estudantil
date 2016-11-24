@@ -1,13 +1,12 @@
 angular.module('Tdah').controller('CourseController', function($scope,$http,$rootScope,$window,$stateParams) {
 
 $scope.variavel = {};
-    console.log($stateParams.courseId);
     /**
      * metodo responsavel por buscar categorias de cursos disponiveis
      */
     $scope.courseCategory  = function () {
 
-        $http.get('//tdah-api.dev/course/category')
+        $http.get($rootScope.env.apiUrl+'course/category')
             .success(function (responses) {
                $scope.categorys = {};
                 $scope.categorys = responses.data;
@@ -22,7 +21,7 @@ $scope.variavel = {};
      */
     $scope.registerCourse  = function () {
 
-        $http.post('//tdah-api.dev/course/course',$scope.course)
+        $http.post($rootScope.env.apiUrl+'course/course',$scope.course)
             .success(function (responses) {
                 $scope.alerts = [
                     { type: 'success', msg: 'Curso Cadastrado com successo!' }
@@ -38,7 +37,7 @@ $scope.variavel = {};
 
     $scope.getCourse  = function () {
 
-        $http.get('//tdah-api.dev/course/course')
+        $http.get($rootScope.env.apiUrl+'course/course')
             .success(function (responses) {
                 console.log(responses);
                 $scope.courses = responses.data;
@@ -50,7 +49,24 @@ $scope.variavel = {};
 
     };
 
-    $scope.closeAlert = function(index) {
+    $scope.deleteCourse  = function (id) {
+
+        $http.delete($rootScope.env.apiUrl+'course/course/'+id)
+            .success(function (responses) {
+                $scope.alerts = [
+                    { type: 'info', msg: 'Curso removido com successo!' }
+                ];
+            })
+            .error(function (error) {
+                $scope.alerts = [
+                    { type: 'danger', msg: 'Erro ao remover o curso' }
+                ];
+
+            });
+
+        };
+
+        $scope.closeAlert = function(index) {
         $scope.alerts.splice(index, 1);
     };
 });

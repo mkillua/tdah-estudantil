@@ -11,7 +11,7 @@ angular.module('Tdah').controller('ClassController', function($scope,$http,$root
     $scope.registerClass  = function () {
 
         $scope.class.courseId = $stateParams.courseId;
-        $http.post('//tdah-api.dev/class/class',$scope.class)
+        $http.post($rootScope.env.apiUrl+'class/class',$scope.class)
             .success(function (responses) {
                 $scope.alerts = [
                     { type: 'success', msg: 'Aula Cadastrada com successo!' }
@@ -27,9 +27,8 @@ angular.module('Tdah').controller('ClassController', function($scope,$http,$root
 
     $scope.getClass  = function () {
 
-        $http.get('//tdah-api.dev/class/class')
+        $http.get($rootScope.env.apiUrl+'class/class')
             .success(function (responses) {
-                console.log(responses);
                 $scope.classes = responses.data;
             })
             .error(function (error) {
@@ -43,7 +42,7 @@ angular.module('Tdah').controller('ClassController', function($scope,$http,$root
 
     console.log($stateParams.classId);
         console.log($stateParams.courseId)
-        $http.get('//tdah-api.dev/class/lesson/'+$stateParams.classId+'/'+$stateParams.courseId)
+        $http.get($rootScope.env.apiUrl+'class/lesson/'+$stateParams.classId+'/'+$stateParams.courseId)
             .success(function (responses) {
                 console.log(responses);
                 $scope.class = responses.data[0];
@@ -60,7 +59,7 @@ angular.module('Tdah').controller('ClassController', function($scope,$http,$root
     $scope.registerQuestion  = function () {
 
         $scope.question.classId = $stateParams.classId;
-        $http.post('//tdah-api.dev/question/question',$scope.question)
+        $http.post($rootScope.env.apiUrl+'question/question',$scope.question)
             .success(function (responses) {
 
                 $scope.alerts = [
@@ -68,7 +67,6 @@ angular.module('Tdah').controller('ClassController', function($scope,$http,$root
                 ];
             })
             .error(function (error) {
-                console.log("deu ruim");
                 $scope.alerts = [
                     { type: 'danger', msg: error }
                 ];
@@ -79,13 +77,12 @@ angular.module('Tdah').controller('ClassController', function($scope,$http,$root
 
     $scope.getAllQuestions  = function () {
 
-        $http.get('//tdah-api.dev/question/question/'+$stateParams.classId)
+        $http.get($rootScope.env.apiUrl+'question/question/'+$stateParams.classId)
             .success(function (responses) {
                 console.log(responses);
               $scope.questions = responses.data;
             })
             .error(function (error) {
-                console.log("deu ruim");
                 $scope.alerts = [
                     { type: 'danger', msg: error }
                 ];
@@ -95,7 +92,7 @@ angular.module('Tdah').controller('ClassController', function($scope,$http,$root
     };
 
     $scope.getQuestionById  = function () {
-        $http.get('//tdah-api.dev/question/especific',{
+        $http.get($rootScope.env.apiUrl+'question/especific',{
             params:{
             'questionId':$stateParams
             .questionId}})
@@ -104,7 +101,6 @@ angular.module('Tdah').controller('ClassController', function($scope,$http,$root
                 $scope.question = responses.data;
             })
             .error(function (error) {
-                console.log("deu ruim");
                 $scope.alerts = [
                     { type: 'danger', msg: error }
                 ];
@@ -112,10 +108,7 @@ angular.module('Tdah').controller('ClassController', function($scope,$http,$root
 
 
     };
-
-
-
-
+    
     $scope.closeAlert = function(index) {
         $scope.alerts.splice(index, 1);
     };

@@ -1,16 +1,15 @@
 
-angular.module('Tdah').controller('UserController', function($scope,$http,$rootScope,$window) {
+angular.module('Tdah').controller('UserController', function($scope,$http,$rootScope,$window,envService) {
 
 
     $scope.user = {};
-
-
+    
     /**
      * metodo responsavel por verificar se email está disponivel
      */
     $scope.validaEmail  = function () {
 
-            $http.get('//tdah-api.dev/user/email/' + $scope.user.email)
+            $http.get($rootScope.env.apiUrl+'user/email/' + $scope.user.email)
                 .success(function (responses) {
                     $scope.validEmail = true;
                 })
@@ -27,7 +26,7 @@ angular.module('Tdah').controller('UserController', function($scope,$http,$rootS
      */
     $scope.register = function () {
 
-       $http.post('//tdah-api.dev/user/register', $scope.user)
+       $http.post($rootScope.env.apiUrl+'user/register', $scope.user)
             .success(function (responses) {
                 $scope.user = {};
                 $scope.validEmail = '';
@@ -48,10 +47,10 @@ angular.module('Tdah').controller('UserController', function($scope,$http,$rootS
      */
     $scope.login = function()
     {
-        console.log($scope.user);
-        $http.get('//tdah-api.dev/user/login/'+$scope.user.email+'/'+$scope.user.password)
+        var apiUrl = envService.read('apiUrl');
+        $http.get($rootScope.env.apiUrl+'user/login/'+$scope.user.email+'/'+$scope.user.password)
             .success(function (response) {
-                $scope.user = response;
+                $window.localStorage.setItem('token',response.data.token);
                 $window.location.href = '/home';
             })
             .error(function (erro){
